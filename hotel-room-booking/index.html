@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayEase - Hotel Room Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <a class="logo" href="#home">🏨 StayEase</a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#search">Find Hotels</a>
+    <a href="#bookings">My Bookings</a>
+    <a href="#admin">Admin</a>
+  </nav>
+  <button id="loginBtn" class="outline-btn">Login</button>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="tag">FIND YOUR PERFECT STAY</span>
+      <h1>Stay somewhere<br><span>worth remembering.</span></h1>
+      <p>Discover comfortable stays, compare room options and plan your next trip.</p>
+    </div>
+    <div class="search-card" id="search">
+      <h2>Find your hotel</h2>
+      <form id="searchForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="destination">Destination</label>
+            <select id="destination" required>
+              <option value="Chennai">Chennai</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Goa">Goa</option>
+              <option value="Kochi">Kochi</option>
+            </select>
+          </div>
+          <div class="field"><label for="checkIn">Check-in</label><input type="date" id="checkIn" required></div>
+          <div class="field"><label for="checkOut">Check-out</label><input type="date" id="checkOut" required></div>
+          <div class="field">
+            <label for="guests">Guests</label>
+            <select id="guests"><option value="1">1 Guest</option><option value="2" selected>2 Guests</option><option value="3">3 Guests</option><option value="4">4 Guests</option><option value="5">5 Guests</option><option value="6">6 Guests</option></select>
+          </div>
+          <div class="field">
+            <label for="roomType">Room type</label>
+            <select id="roomType"><option value="Any">Any room</option><option value="Standard">Standard</option><option value="Deluxe">Deluxe</option><option value="Suite">Suite</option></select>
+          </div>
+        </div>
+        <button class="primary-btn" type="submit">Search Hotels →</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="results" hidden>
+    <span class="tag">AVAILABLE STAYS</span><h2>Hotels for your trip</h2><p id="searchSummary"></p>
+    <div id="hotelResults" class="hotel-grid"></div>
+  </section>
+
+  <section class="section" id="booking" hidden>
+    <div class="panel">
+      <span class="tag">RESERVE YOUR ROOM</span><h2>Guest and booking details</h2><p id="selectedHotel"></p>
+      <form id="bookingForm">
+        <div class="field"><label for="guestName">Full name</label><input id="guestName" required maxlength="80" placeholder="Enter guest full name"></div>
+        <div class="field"><label for="email">Email address</label><input id="email" type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label for="phone">Mobile number</label><input id="phone" type="tel" pattern="[0-9]{10}" required placeholder="10-digit mobile number"></div>
+        <div class="field"><label for="roomCount">Number of rooms</label><select id="roomCount"><option value="1">1 Room</option><option value="2">2 Rooms</option><option value="3">3 Rooms</option></select></div>
+        <div class="field"><label for="specialRequest">Special requests (optional)</label><textarea id="specialRequest" rows="3" maxlength="300" placeholder="Any requests for your stay"></textarea></div>
+        <p id="priceSummary" class="fare-summary"></p>
+        <button type="submit" class="primary-btn">Confirm Booking</button>
+        <button type="button" id="cancelBooking" class="outline-btn">Cancel</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="confirmation" hidden>
+    <div class="panel confirmation-card">
+      <div class="success-icon">✓</div><span class="tag">BOOKING CREATED</span><h2>Your stay is planned!</h2>
+      <div id="confirmationDetails"></div>
+      <p class="notice">Demo booking only. No payment was processed and no confirmation email was sent.</p>
+      <button id="printBooking" class="primary-btn">Print Confirmation</button>
+      <button id="newSearch" class="outline-btn">Find Another Hotel</button>
+    </div>
+  </section>
+
+  <section class="section" id="bookings">
+    <span class="tag">YOUR TRAVEL DASHBOARD</span><h2>My bookings</h2><p>Bookings saved in this browser are shown here.</p>
+    <div id="bookingHistory" class="history-list"></div>
+  </section>
+
+  <section class="section" id="reviews">
+    <span class="tag">GUEST EXPERIENCES</span><h2>Guest reviews</h2>
+    <p>Share feedback for a hotel after your stay.</p>
+    <div class="panel">
+      <form id="reviewForm">
+        <div class="field"><label for="reviewHotel">Hotel</label><select id="reviewHotel" required></select></div>
+        <div class="field"><label for="rating">Rating</label><select id="rating"><option value="5">★★★★★ - Excellent</option><option value="4">★★★★ - Very good</option><option value="3">★★★ - Good</option><option value="2">★★ - Fair</option><option value="1">★ - Poor</option></select></div>
+        <div class="field"><label for="reviewName">Your name</label><input id="reviewName" maxlength="60" required></div>
+        <div class="field"><label for="reviewText">Your review</label><textarea id="reviewText" rows="3" maxlength="500" required placeholder="Tell other guests about your experience"></textarea></div>
+        <button class="primary-btn" type="submit">Submit Review</button>
+      </form>
+      <div id="reviewList" class="review-list"></div>
+    </div>
+  </section>
+
+  <section class="section" id="admin">
+    <div class="panel">
+      <span class="tag">PROPERTY MANAGEMENT</span><h2>Admin panel</h2>
+      <p class="notice">Demonstration panel only. A real system needs protected admin authentication and a server database.</p>
+      <form id="adminForm">
+        <div class="form-grid">
+          <div class="field"><label for="adminHotelName">Hotel name</label><input id="adminHotelName" required maxlength="80"></div>
+          <div class="field"><label for="adminCity">Destination</label><select id="adminCity"><option>Chennai</option><option>Bengaluru</option><option>Mumbai</option><option>Delhi</option><option>Hyderabad</option><option>Goa</option><option>Kochi</option></select></div>
+          <div class="field"><label for="adminRoomType">Room type</label><select id="adminRoomType"><option>Standard</option><option>Deluxe</option><option>Suite</option></select></div>
+          <div class="field"><label for="adminPrice">Price per night (₹)</label><input id="adminPrice" type="number" min="500" max="1000000" required></div>
+          <div class="field"><label for="adminRooms">Rooms available</label><input id="adminRooms" type="number" min="0" max="500" required></div>
+          <div class="field"><label for="adminAmenities">Amenities (comma-separated)</label><input id="adminAmenities" placeholder="Wi-Fi, Breakfast, Pool" required></div>
+          <div class="field"><label for="adminDescription">Description</label><input id="adminDescription" maxlength="180" required></div>
+        </div>
+        <button class="primary-btn" type="submit">Add Hotel Listing</button>
+      </form>
+      <h3 class="subheading">Hotel listings</h3><div id="adminHotelList" class="history-list"></div>
+    </div>
+  </section>
+
+  <section class="section features">
+    <div><span>🔎</span><h3>Easy discovery</h3><p>Search by destination, dates, guests and room type.</p></div>
+    <div><span>🛏️</span><h3>Room options</h3><p>Compare prices, amenities and guest ratings.</p></div>
+    <div><span>📱</span><h3>Responsive design</h3><p>Browse comfortably on desktop, tablet or mobile.</p></div>
+  </section>
+</main>
+
+<footer><p>© 2026 StayEase | Internet Programming Lab Experiment</p><p>Educational prototype — not a live hotel booking service.</p></footer>
+
+<dialog id="loginDialog">
+  <form id="loginForm">
+    <button type="button" id="closeLogin" class="dialog-close" aria-label="Close">×</button>
+    <h2>Welcome to StayEase</h2><p>Demo sign-in for this browser session.</p>
+    <div class="field"><label for="loginEmail">Email</label><input id="loginEmail" type="email" required></div>
+    <div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" minlength="6" required></div>
+    <button class="primary-btn" type="submit">Sign In</button>
+  </form>
+</dialog>
+<script src="script.js"></script>
+</body>
+</html>
