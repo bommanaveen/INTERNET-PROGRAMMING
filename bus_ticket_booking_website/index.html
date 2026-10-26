@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoRoute | Bus Ticket Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <a href="#" class="logo"><span class="logo-icon">G</span> GoRoute</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+  <nav id="nav">
+    <a href="#search">Find a bus</a><a href="#routes">Popular routes</a><a href="#help">Help</a>
+    <button class="nav-btn" id="accountBtn">Login / Register</button>
+    <button class="nav-btn admin-btn" id="adminBtn">Admin</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="search">
+    <div class="hero-inner">
+      <p class="eyebrow">YOUR JOURNEY, MADE SIMPLE</p>
+      <h1>Go places.<br><em>Make memories.</em></h1>
+      <p class="hero-copy">Find your bus, choose your seat, and get moving with confidence.</p>
+      <div class="trust-row"><span>✓ Easy booking</span><span>✓ Pick your seat</span><span>✓ Manage trips online</span></div>
+    </div>
+    <form id="searchForm" class="search-panel">
+      <label>From <input id="from" list="cities" value="Chennai" placeholder="Departure city" required></label>
+      <label>To <input id="to" list="cities" value="Bengaluru" placeholder="Destination city" required></label>
+      <datalist id="cities"><option>Chennai</option><option>Bengaluru</option><option>Coimbatore</option><option>Madurai</option><option>Hyderabad</option><option>Vijayawada</option><option>Trichy</option><option>Pondicherry</option><option>Salem</option><option>Thiruvananthapuram</option></datalist>
+      <label>Journey date <input id="travelDate" type="date" required></label>
+      <label>Passengers <select id="passengers"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+      <button class="button primary search-button" type="submit">Search buses <span>→</span></button>
+    </form>
+  </section>
+
+  <section class="section results-section" id="results">
+    <div class="section-head"><div><p class="eyebrow">TRAVEL YOUR WAY</p><h2>Available buses</h2></div><span class="results-count" id="resultsCount">Choose your journey</span></div>
+    <div id="busList" class="bus-list"></div>
+    <p class="status-message" id="searchMessage" role="status">Search a route and date to see available buses.</p>
+  </section>
+
+  <section class="section routes-section" id="routes">
+    <div class="section-head"><div><p class="eyebrow">WHERE TO NEXT?</p><h2>Popular routes</h2></div><p class="muted">A few journeys to get you started.</p></div>
+    <div class="route-grid">
+      <button class="route-card" data-from="Chennai" data-to="Bengaluru"><span class="route-art art-one">01</span><span><strong>Chennai → Bengaluru</strong><small>Approx. 6 hours · From ₹650</small></span><span>↗</span></button>
+      <button class="route-card" data-from="Chennai" data-to="Coimbatore"><span class="route-art art-two">02</span><span><strong>Chennai → Coimbatore</strong><small>Approx. 8 hours · From ₹780</small></span><span>↗</span></button>
+      <button class="route-card" data-from="Bengaluru" data-to="Hyderabad"><span class="route-art art-three">03</span><span><strong>Bengaluru → Hyderabad</strong><small>Approx. 9 hours · From ₹900</small></span><span>↗</span></button>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div><span class="benefit-icon">⌖</span><h3>Find your route</h3><p>Compare departure times, bus types, fares, and available seats.</p></div>
+    <div><span class="benefit-icon">▦</span><h3>Choose your seat</h3><p>Pick from the live-looking seat map before confirming your trip.</p></div>
+    <div><span class="benefit-icon">♡</span><h3>Keep it organised</h3><p>Access your ticket history, comments, and cancellation options.</p></div>
+  </section>
+
+  <section class="section help-section" id="help">
+    <div><p class="eyebrow">NEED A HAND?</p><h2>Travel with less worry.</h2><p class="muted">Review your ticket in your dashboard or contact our demo support team.</p></div>
+    <div class="help-card"><h3>Frequently asked questions</h3>
+      <details><summary>How do I book a ticket?</summary><p>Search your route and date, choose a bus, select seats, enter passenger details, and confirm the demo payment.</p></details>
+      <details><summary>Can I cancel my booking?</summary><p>Open your dashboard and cancel any confirmed booking before the journey starts. This is a demonstration policy.</p></details>
+      <details><summary>Is payment really processed?</summary><p>No. Payment is simulated. A live system needs a secure payment gateway and server-side verification.</p></details>
+      <details><summary>Can I leave a comment?</summary><p>Yes. After booking, use your dashboard to leave a comment for that bus.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer><span>© <span id="year"></span> GoRoute Bus Booking</span><span>Every journey starts somewhere.</span></footer>
+
+<div class="modal-backdrop hidden" id="modalBackdrop">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="close-button" id="closeModal" aria-label="Close">×</button>
+    <div id="modalContent"></div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
