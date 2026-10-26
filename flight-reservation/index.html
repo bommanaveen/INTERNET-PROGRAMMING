@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyBook - Flight Reservation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <a href="#home" class="logo">✈ SkyBook</a>
+  <nav><a href="#home">Home</a><a href="#search">Search Flights</a><a href="#bookings">My Bookings</a></nav>
+  <button id="loginBtn" class="outline-btn">Login</button>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="tag">YOUR JOURNEY STARTS HERE</span>
+    <h1>Explore the world.<br><span>One flight at a time.</span></h1>
+    <p>Search flights, compare fares and book your next adventure with ease.</p>
+  </div>
+  <div class="search-card" id="search">
+    <h2>Find your flight</h2>
+    <form id="flightForm">
+      <div class="form-grid">
+        <div class="field"><label for="from">From</label><select id="from" required>
+          <option value="Chennai">Chennai (MAA)</option><option value="Bengaluru">Bengaluru (BLR)</option><option value="Delhi">Delhi (DEL)</option><option value="Mumbai">Mumbai (BOM)</option><option value="Hyderabad">Hyderabad (HYD)</option><option value="Kolkata">Kolkata (CCU)</option>
+        </select></div>
+        <div class="field"><label for="to">To</label><select id="to" required>
+          <option value="Bengaluru">Bengaluru (BLR)</option><option value="Chennai">Chennai (MAA)</option><option value="Delhi">Delhi (DEL)</option><option value="Mumbai">Mumbai (BOM)</option><option value="Hyderabad">Hyderabad (HYD)</option><option value="Kolkata">Kolkata (CCU)</option>
+        </select></div>
+        <div class="field"><label for="date">Departure date</label><input type="date" id="date" required></div>
+        <div class="field"><label for="travelClass">Travel class</label><select id="travelClass"><option>Economy</option><option>Business</option><option>First Class</option></select></div>
+        <div class="field"><label for="passengers">Passengers</label><select id="passengers"><option value="1">1 Passenger</option><option value="2">2 Passengers</option><option value="3">3 Passengers</option><option value="4">4 Passengers</option><option value="5">5 Passengers</option></select></div>
+      </div>
+      <button type="submit" class="primary-btn">Search Flights →</button>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="results" hidden>
+  <span class="tag">AVAILABLE OPTIONS</span><h2>Choose your flight</h2><p id="searchSummary"></p>
+  <div id="flightResults" class="flight-list"></div>
+</section>
+
+<section class="section" id="booking" hidden>
+  <div class="panel">
+    <span class="tag">COMPLETE YOUR RESERVATION</span><h2>Passenger and seat details</h2><p id="selectedFlight"></p>
+    <form id="bookingForm">
+      <div class="field"><label for="passengerName">Full name</label><input id="passengerName" required maxlength="80" placeholder="Enter passenger full name"></div>
+      <div class="field"><label for="email">Email address</label><input id="email" type="email" required placeholder="you@example.com"></div>
+      <div class="field"><label for="phone">Phone number</label><input id="phone" type="tel" pattern="[0-9]{10}" required placeholder="10-digit mobile number"></div>
+      <h3>Select seats</h3><div id="seatMap" class="seat-map"></div>
+      <div class="seat-legend"><span><i class="seat available-sample"></i> Available</span><span><i class="seat selected-sample"></i> Selected</span><span><i class="seat occupied-sample"></i> Occupied</span></div>
+      <p id="seatMessage">Choose one seat for each passenger.</p><p id="fareSummary" class="fare-summary"></p>
+      <button type="submit" class="primary-btn">Confirm Booking</button><button type="button" id="cancelBooking" class="outline-btn">Cancel</button>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="confirmation" hidden>
+  <div class="panel confirmation-card"><div class="success-icon">✓</div><span class="tag">BOOKING CREATED</span><h2>You're ready to fly!</h2><div id="confirmationDetails"></div>
+    <p class="notice">Demo booking only. No payment was processed and this is not a valid airline ticket.</p>
+    <button id="downloadTicket" class="primary-btn">Download E-Ticket</button><button id="newSearch" class="outline-btn">Search Another Flight</button>
+  </div>
+</section>
+
+<section class="section" id="bookings"><span class="tag">YOUR TRAVEL RECORDS</span><h2>My bookings</h2><p>Bookings created in this browser appear below.</p><div id="bookingHistory" class="flight-list"></div></section>
+
+<section class="section features">
+  <div><span>✈</span><h3>Easy flight search</h3><p>Find flights by route, date and travel class.</p></div>
+  <div><span>💺</span><h3>Seat selection</h3><p>Choose seats before confirming a reservation.</p></div>
+  <div><span>📱</span><h3>Responsive design</h3><p>Use the application on desktop or mobile.</p></div>
+</section>
+</main>
+<footer><p>© 2026 SkyBook | Internet Programming Lab Experiment</p><p>Educational demonstration — not a live airline booking service.</p></footer>
+
+<dialog id="loginDialog">
+  <form id="loginForm"><button type="button" id="closeLogin" class="dialog-close" aria-label="Close">×</button><h2>Welcome to SkyBook</h2><p>Demo sign-in for this browser session.</p>
+    <div class="field"><label for="loginEmail">Email</label><input type="email" id="loginEmail" required></div>
+    <div class="field"><label for="loginPassword">Password</label><input type="password" id="loginPassword" minlength="6" required></div>
+    <button class="primary-btn" type="submit">Sign In</button><p id="loginMessage"></p>
+  </form>
+</dialog>
+<script src="script.js"></script>
+</body>
+</html>
