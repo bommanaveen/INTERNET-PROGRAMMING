@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy a Cake | Online Cake Ordering</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" data-view="shop"><span class="brand-icon">🎂</span> Buy a Cake</a>
+    <nav>
+      <button class="nav-link active" data-view="shop">Home</button>
+      <button class="nav-link" data-view="orders">My Orders</button>
+      <button class="nav-link" data-view="admin">Admin</button>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-button" id="cartBtn">🛒 Cart <span id="cartCount">0</span></button>
+      <button class="primary small" id="authBtn">Login / Register</button>
+      <button class="outline small hidden" id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">BAKED WITH LOVE</p>
+        <h1>Make every moment<br><span>a little sweeter.</span></h1>
+        <p>Discover freshly baked cakes for birthdays, celebrations, and all the little moments worth celebrating.</p>
+        <button class="primary" data-scroll="catalog">Explore cakes <span>→</span></button>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a cake">
+        <div class="sun"></div><div class="hero-cake">🎂</div>
+        <div class="floating f1">♡</div><div class="floating f2">✦</div><div class="floating f3">🍓</div>
+      </div>
+    </section>
+
+    <section class="catalog section" id="catalog">
+      <div class="section-heading">
+        <div><p class="eyebrow">OUR COLLECTION</p><h2>Find your perfect cake</h2></div>
+        <p class="muted">A little sweetness for every occasion.</p>
+      </div>
+      <div class="filters">
+        <label class="searchbox">⌕ <input id="searchInput" type="search" placeholder="Search cakes, flavors..."></label>
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="all">All categories</option><option>Birthday</option><option>Wedding</option><option>Chocolate</option><option>Fruit</option><option>Celebration</option>
+        </select>
+        <select id="flavorFilter" aria-label="Filter by flavor">
+          <option value="all">All flavors</option><option>Chocolate</option><option>Vanilla</option><option>Strawberry</option><option>Red Velvet</option><option>Butterscotch</option>
+        </select>
+        <div class="price-filter"><label for="priceRange">Up to <strong id="priceLabel">₹2,000</strong></label><input id="priceRange" type="range" min="300" max="2000" step="100" value="2000"></div>
+      </div>
+      <div class="category-pills" id="categoryPills">
+        <button class="pill selected" data-category="all">All cakes</button><button class="pill" data-category="Birthday">🎈 Birthday</button><button class="pill" data-category="Wedding">💍 Wedding</button><button class="pill" data-category="Chocolate">🍫 Chocolate</button><button class="pill" data-category="Fruit">🍓 Fruit</button>
+      </div>
+      <div id="cakeGrid" class="cake-grid"></div>
+      <p id="emptyState" class="empty hidden">No cakes match your search. Try another filter.</p>
+    </section>
+
+    <section class="promise">
+      <div><span>🚚</span><h3>Fresh delivery</h3><p>Carefully packed and delivered to your door.</p></div>
+      <div><span>🍰</span><h3>Made with love</h3><p>Quality ingredients in every delicious bite.</p></div>
+      <div><span>🔒</span><h3>Safe checkout</h3><p>A simple, secure-feeling checkout experience.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span>🎂</span> Buy a Cake</a><p>Made for life's sweetest moments.</p><small>Internet Programming Lab · Front-end demonstration</small></footer>
+
+  <div class="overlay hidden" id="overlay"></div>
+  <aside class="drawer hidden" id="cartDrawer">
+    <div class="drawer-head"><h2>Your cart</h2><button class="icon-btn" data-close>✕</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+    <button class="primary full" id="checkoutBtn">Proceed to checkout</button>
+  </aside>
+
+  <dialog id="authDialog" class="modal">
+    <button class="modal-close" data-dialog-close>✕</button>
+    <p class="eyebrow">WELCOME TO BUY A CAKE</p><h2 id="authTitle">Login to your account</h2>
+    <div class="tabs"><button class="tab active" id="loginTab">Login</button><button class="tab" id="registerTab">Register</button></div>
+    <form id="authForm">
+      <label id="nameWrap" class="hidden">Full name<input id="authName" autocomplete="name" placeholder="Your name"></label>
+      <label>Email address<input id="authEmail" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+      <label>Password<input id="authPassword" type="password" required minlength="4" autocomplete="current-password" placeholder="At least 4 characters"></label>
+      <button class="primary full" id="authSubmit">Login</button>
+      <p class="form-note">Demo admin: <b>admin@buyacake.test</b> / <b>admin123</b></p>
+      <p id="authMessage" class="message"></p>
+    </form>
+  </dialog>
+
+  <dialog id="cakeDialog" class="modal product-modal">
+    <button class="modal-close" data-dialog-close>✕</button><div id="cakeDetail"></div>
+  </dialog>
+
+  <dialog id="checkoutDialog" class="modal">
+    <button class="modal-close" data-dialog-close>✕</button>
+    <p class="eyebrow">ALMOST THERE</p><h2>Delivery details</h2>
+    <form id="checkoutForm">
+      <label>Full name<input id="shipName" required placeholder="Recipient name"></label>
+      <label>Phone number<input id="shipPhone" required type="tel" pattern="[0-9+ ()-]{8,}" placeholder="Contact number"></label>
+      <label>Delivery address<textarea id="shipAddress" required rows="3" placeholder="House number, street, area"></textarea></label>
+      <label>City / PIN code<input id="shipCity" required placeholder="City and PIN code"></label>
+      <label>Payment method<select id="paymentMethod"><option>Cash on Delivery (Demo)</option><option>Online payment (Demo only)</option></select></label>
+      <p class="form-note">No real payment is processed by this lab demo.</p>
+      <button class="primary full">Place order</button><p id="checkoutMessage" class="message"></p>
+    </form>
+  </dialog>
+
+  <section id="appView" class="section app-view hidden"></section>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
