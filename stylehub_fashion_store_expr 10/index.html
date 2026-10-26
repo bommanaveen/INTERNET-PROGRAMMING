@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleHub | Fashion for Everyone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" data-page="home"><span class="brand-mark">S</span> StyleHub</a>
+    <nav class="main-nav">
+      <a href="#" data-page="home">Home</a>
+      <a href="#catalogue" data-page="home">Shop</a>
+      <a href="#" data-category="Women">Women</a>
+      <a href="#" data-category="Men">Men</a>
+      <a href="#" data-category="Children">Children</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="wishlistNav" title="Wishlist">♡ <span id="wishCount">0</span></button>
+      <button class="icon-btn" id="accountNav" title="Account">♙</button>
+      <button class="cart-btn" id="cartNav">Bag <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE NEW SEASON EDIT</p>
+        <h1>Find your<br><em>everyday style.</em></h1>
+        <p>Thoughtful essentials, standout pieces, and the little details that make a look yours.</p>
+        <button class="primary-btn" id="shopNow">Explore collection <span>→</span></button>
+        <div class="hero-note"><span class="dot"></span> New arrivals added weekly</div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-image"></div>
+        <div class="hero-sticker">YOUR STYLE<br>YOUR STORY</div>
+        <div class="hero-caption">SPRING / SUMMER — 26</div>
+      </div>
+    </section>
+
+    <section class="benefit-strip">
+      <div><span>✦</span><b>Curated for you</b><small>Styles for every day</small></div>
+      <div><span>↗</span><b>Easy returns</b><small>Simple 14-day policy</small></div>
+      <div><span>□</span><b>Secure checkout</b><small>Demo payment flow</small></div>
+      <div><span>♡</span><b>Made to be loved</b><small>Save your favourites</small></div>
+    </section>
+
+    <section class="section category-section">
+      <div class="section-heading"><div><p class="eyebrow">FIND YOUR FIT</p><h2>Shop by category</h2></div><p>Good style starts with<br>the right essentials.</p></div>
+      <div class="category-grid">
+        <button class="category-card cat-women" data-category="Women"><span>01 / WOMEN</span><strong>Modern<br>feminine</strong><i>Explore ↗</i></button>
+        <button class="category-card cat-men" data-category="Men"><span>02 / MEN</span><strong>Everyday<br>elevated</strong><i>Explore ↗</i></button>
+        <button class="category-card cat-kids" data-category="Children"><span>03 / CHILDREN</span><strong>Little<br>adventures</strong><i>Explore ↗</i></button>
+        <button class="category-card cat-accessories" data-category="Accessories"><span>04 / ACCESSORIES</span><strong>Finishing<br>touches</strong><i>Explore ↗</i></button>
+      </div>
+    </section>
+
+    <section class="section catalogue-section" id="catalogue">
+      <div class="section-heading"><div><p class="eyebrow">THE STYLEHUB EDIT</p><h2>Pieces to live in</h2></div><button class="text-btn" id="clearFilters">Clear filters ↗</button></div>
+      <div class="catalogue-toolbar">
+        <div class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search clothing, shoes, accessories..."></div>
+        <select id="categoryFilter" aria-label="Category"><option value="All">All categories</option><option>Women</option><option>Men</option><option>Children</option><option>Accessories</option></select>
+        <select id="subcategoryFilter" aria-label="Subcategory"><option value="All">All styles</option><option>Casual Wear</option><option>Formal Wear</option><option>Footwear</option><option>Accessories</option><option>Seasonal</option></select>
+        <select id="sortFilter" aria-label="Sort products"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="rating">Top rated</option></select>
+      </div>
+      <div class="filter-chips">
+        <button class="chip active" data-chip="All">All pieces</button><button class="chip" data-chip="Casual Wear">Casual</button><button class="chip" data-chip="Formal Wear">Formal</button><button class="chip" data-chip="Footwear">Footwear</button><button class="chip" data-chip="Seasonal">Seasonal</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <p class="empty-state hidden" id="emptyState">No pieces match those filters. Try another search.</p>
+    </section>
+
+    <section class="sale-banner">
+      <div><p class="eyebrow">A LITTLE SOMETHING EXTRA</p><h2>Good looks.<br><em>Better prices.</em></h2><p>Take 15% off your first order with code <b>STYLE15</b>.</p></div>
+      <div class="sale-side"><span>STYLEHUB<br>MEMBERS CLUB</span><strong>15<small>% OFF</small></strong><button id="saleShop" class="light-btn">Shop the edit ↗</button></div>
+    </section>
+
+    <section class="section style-note">
+      <p class="eyebrow">STYLE, YOUR WAY</p><h2>Make room for<br><em>what feels like you.</em></h2><p>Save your favourites, explore new combinations, and make your wardrobe work harder.</p><button class="outline-btn" id="discoverBtn">Discover your next favourite ↗</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand"><a class="brand" href="#"><span class="brand-mark">S</span> StyleHub</a><p>Wear what feels like you.</p></div>
+    <div><b>Explore</b><a href="#catalogue">New arrivals</a><a href="#catalogue">Best sellers</a><a href="#catalogue">Sale</a></div>
+    <div><b>Customer care</b><a href="#">Shipping & returns</a><a href="#">Size guide</a><a href="#">Contact us</a></div>
+    <div class="newsletter"><b>Notes from StyleHub</b><p>New drops, style ideas, and member-only offers.</p><form id="newsletterForm"><input type="email" placeholder="Your email address" required><button aria-label="Subscribe">→</button></form><small id="newsletterMsg"></small></div>
+    <div class="footer-bottom">© 2026 StyleHub. Student demonstration project. <span>Privacy · Terms · Instagram</span></div>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
