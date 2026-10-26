@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Studio | Beauty Parlour Booking</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <a href="#" class="brand" data-page="home"><span class="brand-mark">✿</span><span>glow<span class="brand-light">studio</span><small>BEAUTY & WELLNESS</small></span></a>
+  <nav><button class="nav active" data-page="home">Home</button><button class="nav" data-page="services">Services</button><button class="nav" data-page="mybookings">My bookings</button><button class="nav" data-page="manager">Manager</button></nav>
+  <div class="head-actions"><button class="login-btn" id="loginBtn">Sign in</button><button class="btn btn-dark" data-page="services">Book now ↗</button><button class="login-btn hidden" id="logoutBtn">Logout</button></div>
+</header>
+<main>
+<section id="hero" class="hero">
+ <div class="hero-copy"><span class="eyebrow">YOUR TIME TO GLOW</span><h1>A little care.<br><em>A lot of confidence.</em></h1><p>Discover your next self-care ritual. Book trusted beauty professionals and enjoy a moment that's all about you.</p><div class="hero-actions"><button class="btn btn-dark" data-page="services">Explore services <span>→</span></button><span class="rating">★★★★★ <small>Loved by our clients</small></span></div><div class="hero-stats"><div><b>12+</b><small>Beauty services</small></div><div><b>8</b><small>Expert stylists</small></div><div><b>4.9/5</b><small>Client rating</small></div></div></div>
+ <div class="hero-visual"><div class="blob"></div><div class="hero-flower">✿</div><div class="hero-card card-one"><span>✦</span><div><b>Your moment</b><small>is waiting</small></div></div><div class="hero-card card-two"><span>♡</span><div><b>Self-care</b><small>starts here</small></div></div><div class="hero-face">☺</div><div class="hero-caption">FEEL GOOD. LOOK GOOD.</div></div>
+</section>
+<section class="trust-strip"><span>✧ Thoughtful beauty</span><span>✧ Experienced professionals</span><span>✧ Easy online booking</span><span>✧ Your time, your way</span></section>
+<section id="servicesSection" class="section">
+ <div class="section-heading"><div><span class="eyebrow">FIND YOUR RITUAL</span><h2>Services made for you</h2><p>From a quick refresh to a full day of pampering.</p></div><button class="text-link" data-page="services">View all services ↗</button></div>
+ <div class="service-filters"><label class="search">⌕ <input id="serviceSearch" placeholder="Search services..."></label><select id="categoryFilter"><option value="all">All categories</option><option>Hair</option><option>Skin</option><option>Nails</option><option>Makeup</option><option>Spa</option></select><select id="sortFilter"><option value="popular">Most popular</option><option value="priceLow">Price: low to high</option><option value="priceHigh">Price: high to low</option></select></div>
+ <div id="serviceGrid" class="service-grid"></div>
+</section>
+<section class="how section"><div class="section-heading centered"><div><span class="eyebrow">SIMPLE AS ONE, TWO, THREE</span><h2>Your glow-up, in a few clicks</h2></div></div><div class="steps"><article><span>01</span><div class="step-icon">✧</div><h3>Choose your service</h3><p>Find the treatment that fits your mood and needs.</p></article><article><span>02</span><div class="step-icon">▦</div><h3>Pick your time</h3><p>Choose a stylist and an available appointment slot.</p></article><article><span>03</span><div class="step-icon">♡</div><h3>Show up and glow</h3><p>We’ll take care of the details. You enjoy the moment.</p></article></div></section>
+<section class="testimonial"><div class="quote-mark">“</div><p>Such a lovely experience from booking to the appointment. The team made me feel welcome and cared for.</p><div class="client">★★★★★ <span>— A happy Glow Studio client</span></div></section>
+</main>
+<footer><a href="#" class="brand"><span class="brand-mark">✿</span><span>glow<span class="brand-light">studio</span><small>BEAUTY & WELLNESS</small></span></a><p>Your little corner of self-care.</p><small>Internet Programming Lab · Front-end demonstration</small></footer>
+<section id="appPage" class="section app-page hidden"></section>
+<div class="toast" id="toast" role="status"></div>
+<dialog id="authDialog" class="modal"><button class="close" data-close>×</button><span class="eyebrow">WELCOME TO GLOW STUDIO</span><h2 id="authHeading">Welcome back</h2><div class="tabs"><button id="signInTab" class="tab active">Sign in</button><button id="registerTab" class="tab">Create account</button></div><form id="authForm"><label id="nameLabel" class="hidden">Full name<input id="authName" placeholder="Your name"></label><label>Email address<input id="authEmail" type="email" required placeholder="you@example.com"></label><label>Password<input id="authPassword" type="password" minlength="4" required placeholder="At least 4 characters"></label><button class="btn btn-dark wide" id="authSubmit">Sign in</button><p class="hint">Demo manager: manager@glow.test / glow123</p><p id="authMessage" class="message"></p></form></dialog>
+<dialog id="bookingDialog" class="modal booking-modal"><button class="close" data-close>×</button><span class="eyebrow">YOUR LITTLE SELF-CARE MOMENT</span><h2>Book an appointment</h2><div id="bookingServiceInfo"></div><form id="bookingForm"><label>Choose stylist<select id="stylistSelect" required></select></label><div class="two-col"><label>Date<input id="bookingDate" type="date" required></label><label>Time slot<select id="timeSelect" required></select></label></div><label>Notes for your stylist (optional)<textarea id="bookingNotes" rows="2" placeholder="Anything we should know?"></textarea><label>Payment preference<select id="bookingPayment"><option>Pay at salon (Demo)</option><option>Online payment (Demo only)</option></select></label><p class="hint">Online payments are not processed in this demo.</p><button class="btn btn-dark wide">Confirm appointment</button><p id="bookingMessage" class="message"></p></form></dialog>
+<dialog id="serviceDialog" class="modal"><button class="close" data-close>×</button><div id="serviceDetail"></div></dialog>
+<dialog id="feedbackDialog" class="modal"><button class="close" data-close>×</button><span class="eyebrow">YOUR VOICE MATTERS</span><h2>Share your experience</h2><form id="feedbackForm"><input id="feedbackBooking" type="hidden"><label>Rating<select id="feedbackRating"><option value="5">★★★★★ — Loved it</option><option value="4">★★★★☆ — Great</option><option value="3">★★★☆☆ — Good</option><option value="2">★★☆☆☆ — Could be better</option><option value="1">★☆☆☆☆ — Not satisfied</option></select></label><label>Your feedback<textarea id="feedbackText" rows="4" required placeholder="Tell us how your appointment went..."></textarea></label><button class="btn btn-dark wide">Submit feedback</button></form></dialog>
+<script src="script.js"></script>
+</body></html>
