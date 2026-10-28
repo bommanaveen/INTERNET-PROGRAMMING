@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Finder | Find a place to call home</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <a class="logo" href="#"><span class="logo-icon">⌂</span> home<span>finder</span></a>
+  <nav><a href="#properties">Buy</a><a href="#properties" data-purpose="Rent">Rent</a><a href="#agents">Find an agent</a><a href="#about">About</a></nav>
+  <div class="head-actions"><button class="link-btn" id="savedNav">♡ Saved <span id="savedCount">0</span></button><button class="login-btn" id="loginNav">Log in</button><button class="primary small" id="postNav">＋ List a property</button></div>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="pill"><span></span> YOUR NEXT CHAPTER STARTS HERE</div>
+    <h1>Find a place<br>to call <em>home.</em></h1>
+    <p>Thoughtfully curated homes, apartments, and spaces for every kind of life. Find your place with confidence.</p>
+    <div class="hero-stats"><div><b>2,400+</b><small>Places to explore</small></div><div><b>180+</b><small>Trusted agents</small></div><div><b>24/7</b><small>Search on your time</small></div></div>
+  </div>
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85" alt="" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85'">
+    <div class="floating-card"><div class="mini-icon">⌂</div><div><b>Find your kind of place</b><small>Homes with a little more heart.</small></div><span>↗</span></div>
+    <div class="hero-tag">GOOD SPACES.<br>GOOD LIVING.</div>
+  </div>
+  <div class="search-panel">
+    <div class="search-tabs"><button class="active" data-purpose="Buy">Buy</button><button data-purpose="Rent">Rent</button><button data-purpose="Commercial">Commercial</button></div>
+    <div class="search-fields">
+      <label class="location-field"><span>⌕</span><div><small>LOCATION</small><input id="locationSearch" placeholder="City, neighbourhood, or PIN code"></div></label>
+      <label><small>PROPERTY TYPE</small><select id="typeSearch"><option value="All">Any type</option><option>House</option><option>Apartment</option><option>Land</option><option>Villa</option><option>Commercial</option></select></label>
+      <label><small>PRICE RANGE</small><select id="priceSearch"><option value="All">Any price</option><option value="5000000">Under ₹50 lakh</option><option value="10000000">Under ₹1 crore</option><option value="20000000">Under ₹2 crore</option><option value="50000000">Under ₹5 crore</option></select></label>
+      <button class="primary search-submit" id="searchBtn">Search homes <span>→</span></button>
+    </div>
+    <div class="save-search-row"><label><input type="checkbox" id="saveCriteria"> Save this search for next time</label><span id="searchMsg"></span></div>
+  </div>
+</section>
+
+<section class="trust-strip"><div><span>⌂</span><b>Homes for real life</b><small>Find a space that fits you</small></div><div><span>◉</span><b>Explore the neighbourhood</b><small>Know more before you move</small></div><div><span>✓</span><b>Connect with agents</b><small>Local knowledge, human help</small></div><div><span>♡</span><b>Save your favourites</b><small>Keep the shortlist close</small></div></section>
+
+<section class="section" id="properties">
+  <div class="section-heading"><div><p class="eyebrow">FIND YOUR PLACE</p><h2>Spaces worth seeing</h2><p class="subtext">A considered collection of homes, land, and commercial spaces.</p></div><a href="#properties" class="text-link" id="viewAll">View all listings ↗</a></div>
+  <div class="filters">
+    <div class="filter-search"><span>⌕</span><input id="keywordSearch" placeholder="Search by name, area, or keyword"></div>
+    <select id="areaFilter"><option value="All">All locations</option><option>Chennai</option><option>Bengaluru</option><option>Coimbatore</option><option>Hyderabad</option><option>Sriperumbudur</option></select>
+    <select id="kindFilter"><option value="All">All property types</option><option>House</option><option>Apartment</option><option>Land</option><option>Villa</option><option>Commercial</option></select>
+    <select id="purposeFilter"><option value="All">Buy or rent</option><option>Buy</option><option>Rent</option><option>Commercial</option></select>
+    <select id="budgetFilter"><option value="All">Any budget</option><option value="5000000">Under ₹50 lakh</option><option value="10000000">Under ₹1 crore</option><option value="20000000">Under ₹2 crore</option><option value="50000000">Under ₹5 crore</option></select>
+    <select id="sortFilter"><option value="featured">Featured first</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select>
+  </div>
+  <div class="results-meta"><span id="resultCount">Showing properties</span><button id="mapToggle" class="map-toggle">◎ Map view</button></div>
+  <div class="listing-layout"><div class="property-grid" id="propertyGrid"></div><aside class="map-panel hidden" id="mapPanel"><div class="map-head"><b>Explore the area</b><button id="closeMap">×</button></div><div id="mapCanvas" class="map-canvas"></div><p class="map-note">Demo map preview. Open Google Maps for real directions and area details.</p><div id="mapLinks"></div></aside></div>
+  <p class="empty hidden" id="emptyState">No properties match those filters. Try changing your search.</p>
+</section>
+
+<section class="valuation">
+  <div><p class="eyebrow">A SMARTER START</p><h2>Wonder what your<br>property is worth?</h2><p>Get a quick estimate based on the details you know. A starting point for your next move.</p><button class="light-button" id="valuationBtn">Estimate a property value ↗</button></div>
+  <div class="valuation-art"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="Modern home"></div>
+</section>
+
+<section class="section agents-section" id="agents">
+  <div class="section-heading"><div><p class="eyebrow">LOCAL KNOWLEDGE, HUMAN HELP</p><h2>Meet your property people</h2><p class="subtext">Connect with agents who know the neighbourhood.</p></div></div>
+  <div class="agent-tools"><div class="filter-search"><span>⌕</span><input id="agentSearch" placeholder="Search agents or companies"></div><select id="agentArea"><option value="All">All locations</option><option>Chennai</option><option>Bengaluru</option><option>Coimbatore</option><option>Hyderabad</option></select></div>
+  <div class="agent-grid" id="agentGrid"></div>
+</section>
+
+<section class="cta" id="about"><div><p class="eyebrow">SELLING OR RENTING?</p><h2>Your property deserves<br>the right people.</h2><p>Share a few details and help the right buyer or renter find you.</p></div><button class="primary" id="listProperty">List your property <span>→</span></button></section>
+</main>
+<footer><div class="footer-top"><a class="logo" href="#"><span class="logo-icon">⌂</span> home<span>finder</span></a><p>A more thoughtful way to find your next place.</p><div class="socials">in&nbsp;&nbsp; ◎&nbsp;&nbsp; f</div></div><div class="footer-bottom">© 2026 Home Finder · Internet Programming Lab demonstration <span>Privacy · Terms · Help</span></div></footer>
+<div id="toast" class="toast"></div>
+<div id="backdrop" class="backdrop hidden"><section class="modal"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></section></div>
+<script src="script.js"></script>
+</body></html>
