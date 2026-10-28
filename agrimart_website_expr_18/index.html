@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriMart | Farm Supplies Online</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="AgriMart home"><span class="brand-mark">🌱</span><span>Agri<span>Mart</span><small>Grow more. Grow better.</small></span></a>
+  <div class="search-wrap"><input id="searchInput" type="search" placeholder="Search seeds, tools, fertilizers..." aria-label="Search products"><button id="searchBtn">Search</button></div>
+  <div class="header-actions"><button class="ghost" id="walletBtn">Wallet ₹<b id="walletAmount">2,500</b></button><button class="cart-button" id="cartOpen">🛒 Cart <b id="cartCount">0</b></button><button class="account-button" id="accountOpen">My Account</button></div>
+</header>
+<nav class="nav">
+  <a href="#shop">Shop all</a><a href="#shop" data-category="Seeds">Seeds</a><a href="#shop" data-category="Fertilizers">Fertilizers</a><a href="#shop" data-category="Pesticides">Pesticides</a><a href="#shop" data-category="Equipment">Equipment & tools</a><a href="#orders">My orders</a><a href="#farmer">Farmer portal</a>
+</nav>
+<main>
+  <section class="hero">
+    <div class="hero-copy"><span class="eyebrow">YOUR FARMING PARTNER</span><h1>Everything your farm<br><em>needs to thrive.</em></h1><p>Quality farm supplies, trusted products, and reliable delivery — all in one place.</p><div class="hero-buttons"><button class="primary" onclick="document.querySelector('#shop').scrollIntoView({behavior:'smooth'})">Explore products <span>→</span></button><button class="light-button" id="ordersHero">Track an order</button></div><div class="hero-stats"><div><b>500+</b><small>Farm essentials</small></div><div><b>Trusted</b><small>Quality brands</small></div><div><b>Farm-first</b><small>Customer care</small></div></div></div>
+    <div class="hero-art"><div class="sun"></div><div class="field field3"></div><div class="field field2"></div><div class="field field1"></div><div class="crop">🌾</div><div class="hero-note"><span>✓</span><div><b>Made for growers</b><small>Supplies for every season</small></div></div></div>
+  </section>
+  <section class="benefits"><div><span>🚚</span><p><b>Reliable delivery</b><small>Track every order</small></p></div><div><span>🌿</span><p><b>Farm essentials</b><small>All in one marketplace</small></p></div><div><span>🔒</span><p><b>Secure checkout</b><small>Wallet demo payment</small></p></div><div><span>💬</span><p><b>Farmer support</b><small>Help when you need it</small></p></div></section>
+  <section id="shop" class="section">
+    <div class="section-heading"><div><span class="eyebrow">SHOP BY CATEGORY</span><h2>Supplies for every field</h2><p>Browse carefully selected essentials for your farm.</p></div><div class="filters"><select id="categoryFilter" aria-label="Filter by category"><option value="All">All categories</option><option>Seeds</option><option>Fertilizers</option><option>Pesticides</option><option>Equipment</option></select><select id="sortFilter" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div></div>
+    <div class="category-chips"><button class="chip active" data-category="All">All products</button><button class="chip" data-category="Seeds">🌾 Seeds</button><button class="chip" data-category="Fertilizers">🌱 Fertilizers</button><button class="chip" data-category="Pesticides">🛡️ Crop protection</button><button class="chip" data-category="Equipment">🧰 Equipment & tools</button></div>
+    <div id="productGrid" class="product-grid"></div>
+    <div id="emptyProducts" class="empty hidden">No products found. Try a different search or category.</div>
+  </section>
+  <section class="promo"><div><span class="eyebrow">FOR FARMERS & GROWERS</span><h2>Have products to sell?</h2><p>Join AgriMart as a farmer-seller. Add products, manage orders, and track sales from one simple dashboard.</p><button class="primary" id="farmerCta">Open farmer portal →</button></div><div class="promo-icon">🧑🏽‍🌾</div></section>
+  <section id="orders" class="section orders-section"><div class="section-heading"><div><span class="eyebrow">YOUR PURCHASES</span><h2>My orders</h2><p>Follow your order from confirmation to delivery.</p></div><button class="outline" id="refreshOrders">Refresh orders</button></div><div id="ordersList" class="orders-list"></div></section>
+  <section id="farmer" class="section farmer-section"><div class="section-heading"><div><span class="eyebrow">SELLER WORKSPACE</span><h2>Farmer portal</h2><p>Demo tools for product listings, orders, shipping, and sales.</p></div><button class="outline" id="farmerLogin">Farmer login / register</button></div>
+    <div class="farmer-tabs"><button class="tab active" data-tab="products">My products</button><button class="tab" data-tab="manage">Manage orders</button><button class="tab" data-tab="sales">My sales</button></div>
+    <div id="farmerPanel"></div>
+  </section>
+</main>
+<footer><div class="footer-brand">🌱 AgriMart</div><p>Helping growers access essential agricultural supplies with ease.</p><div class="footer-links"><a href="#shop">Shop</a><a href="#orders">Orders</a><a href="#farmer">Farmer portal</a><a href="#" id="supportLink">Customer support</a></div><small>© 2026 AgriMart · Educational front-end demo</small></footer>
+<div id="toast" class="toast" role="status"></div>
+<div id="modalBackdrop" class="modal-backdrop hidden"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><h3 id="modalTitle">AgriMart</h3><button id="modalClose" class="close">×</button></div><div id="modalBody"></div></div></div>
+<script src="script.js"></script>
+</body>
+</html>
